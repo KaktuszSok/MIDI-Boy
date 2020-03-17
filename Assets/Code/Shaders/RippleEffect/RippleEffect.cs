@@ -110,9 +110,7 @@ public class RippleEffect : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.D))
-            Emit();
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && Input.GetKey(KeyCode.LeftShift))
             Awake(); //Recalc
 
         foreach (var d in droplets) d.Update();

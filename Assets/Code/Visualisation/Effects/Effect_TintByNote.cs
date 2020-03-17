@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Effect_TintByNote : VisualEventListener
 {
-    VisualisationManager visualisation;
     SkyboxMaster skybox;
 
     public float transposeHue = 0;
@@ -21,7 +20,6 @@ public class Effect_TintByNote : VisualEventListener
     protected override void Start()
     {
         base.Start();
-        visualisation = VisualisationManager.instance;
         skybox = SkyboxMaster.instance;
     }
 

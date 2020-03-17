@@ -24,6 +24,8 @@ public class VisualisationManager : MonoBehaviour {
 
     [Header("Keybinds")]
     public KeyCode KeyPlayPause = KeyCode.Space;
+    public KeyCode KeyStop = KeyCode.Backspace;
+    public KeyCode KeyModifier = KeyCode.LeftShift;
     public int logTrack = -1;
 
     //----Runtime----\\
@@ -125,7 +127,7 @@ public class VisualisationManager : MonoBehaviour {
     private void Update()
     {
         preciseTime = GetAudioTimeInSeconds(music.timeSamples) - visualsOffset;
-        if (preciseTime < prevTime) { GoToTime(preciseTime); }
+        //if (preciseTime < prevTime) { GoToTime(preciseTime); }
 
         if (playing)
         {
@@ -137,9 +139,14 @@ public class VisualisationManager : MonoBehaviour {
         {
             TogglePause();
         }
+        if (Input.GetKeyDown(KeyStop) && started)
+        {
+            Stop();
+            GoToTime(startOffset);
+        }
         if (Input.mouseScrollDelta.y != 0 && started)
         {
-            GoToTime(preciseTime + Mathf.Sign(Input.mouseScrollDelta.y)*(Input.GetKey(KeyCode.LeftShift) ? 4:1)/(MIDITempoMap.Tempo.AtTime(GetTimeInTicks(preciseTime)).BeatsPerMinute/60f));
+            GoToTime(preciseTime + Mathf.Sign(Input.mouseScrollDelta.y)*(Input.GetKey(KeyModifier) ? 4:1)/(MIDITempoMap.Tempo.AtTime(GetTimeInTicks(preciseTime)).BeatsPerMinute/60f));
         }
     }
 
@@ -195,13 +202,15 @@ public class VisualisationManager : MonoBehaviour {
         //return;
 
         GameObject testInstance = Instantiate(testPrefab);
-        testInstance.transform.position = Vector3.Lerp(Vector3.left * 15f, Vector3.right * 15f, note.NoteNumber / 127f)*2f; //Position based on pitch
-        testInstance.transform.position += Vector3.up * 3f; //Position shifted by constant
+        testInstance.transform.SetParent(Camera.main.transform); //Parent to camera (so it spawns relative to cam)
+        testInstance.transform.localPosition = Vector3.Lerp(Vector3.left * 15f, Vector3.right * 15f, note.NoteNumber / 127f)*2f; //Position based on pitch
+        testInstance.transform.localPosition += Vector3.up*3f + Vector3.forward*10f; //Position shifted by constant
         testInstance.transform.localScale = Vector3.one * note.Velocity / 127f; //Scale based on velocity
-        testInstance.GetComponent<Rigidbody>().velocity = Vector3.forward * 10f; //Physics velocity constant
+        //testInstance.GetComponent<Rigidbody>().velocity = testInstance.transform.parent.forward * 10f; //Physics velocity constant
         testInstance.name = "Note on track " + track; //Name based on track
         testInstance.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.HSVToRGB((float)track/trackLengthsCache.Length, 1, 1)); //Colour based on track
-        testInstance.transform.Rotate(Vector3.up * track * -90f / trackLengthsCache.Length); //Rotation based on track
+        testInstance.transform.Rotate(testInstance.transform.parent.up * track * -90f / trackLengthsCache.Length); //Rotation based on track
+        testInstance.transform.SetParent(transform); //Re-parent to visualisation.
     }
 
     public void TogglePause()

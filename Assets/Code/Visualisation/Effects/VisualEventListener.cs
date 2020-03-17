@@ -6,12 +6,15 @@ using Melanchall.DryWetMidi.Interaction;
 
 public abstract class VisualEventListener : MonoBehaviour
 {
+    public VisualisationManager visualisation;
+
     public int[] listenedTracks = new int[1]; //For ease of use in editor. To reapply, disable and re-enable this script.
     public HashSet<int> listenedTracksHashset = new HashSet<int>();
 
     protected virtual void Start()
     {
-        VisualisationManager.instance.OnMIDINoteDown += OnAnyNoteDown;
+        visualisation = VisualisationManager.instance;
+        visualisation.OnMIDINoteDown += OnAnyNoteDown;
     }
 
     protected virtual void OnEnable()

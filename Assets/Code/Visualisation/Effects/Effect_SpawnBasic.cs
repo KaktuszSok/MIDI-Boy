@@ -18,7 +18,7 @@ public class Effect_SpawnBasic : VisualEventListener
 
     public override void OnNoteDown(int track, Note note)
     {
-        Transform instance = Instantiate(PrefabToSpawn, setParent ? transform.parent : null).transform;
+        Transform instance = Instantiate(PrefabToSpawn, setParent ?  visualisation.transform : null).transform;
         instance.position = transform.position;
         instance.rotation = transform.rotation;
         instance.localScale = transform.localScale;
