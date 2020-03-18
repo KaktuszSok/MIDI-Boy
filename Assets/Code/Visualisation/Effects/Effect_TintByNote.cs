@@ -48,7 +48,7 @@ public class Effect_TintByNote : VisualEventListener
     public override void OnNoteDown(int track, Note note)
     {
         //Buffer colour to skybox based on the note pitch.
-        Color noteColour = Color.HSVToRGB(Mathf.Repeat(((float)note.NoteName / 12) + transposeHue, 1f), 1, 1)*intensityMult;
+        Color noteColour = ColourUtils.ColourFromNote(note, transposeHue)*intensityMult;
         frameColourBuffer.Add(noteColour);
     }
 }

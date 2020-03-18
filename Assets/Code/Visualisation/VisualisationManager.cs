@@ -199,7 +199,7 @@ public class VisualisationManager : MonoBehaviour {
     void OnNoteDown(int track, Note note)
     {
         //Debug Function. Uncomment line below to disable.
-        //return;
+        return;
 
         GameObject testInstance = Instantiate(testPrefab);
         testInstance.transform.SetParent(Camera.main.transform); //Parent to camera (so it spawns relative to cam)

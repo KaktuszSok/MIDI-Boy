@@ -28,6 +28,8 @@ public class SkyboxMaster : MonoBehaviour
     {
         instance = this;
         skybox = RenderSettings.skybox;
+        if (!lightSource) lightSource = FindObjectOfType<Light>();
+
         if(baseLightColour == Color.clear)
         {
             baseLightColour = lightSource.color;

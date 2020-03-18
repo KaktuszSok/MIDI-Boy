@@ -4,9 +4,9 @@ using UnityEngine;
 using Melanchall.DryWetMidi.Core;
 using Melanchall.DryWetMidi.Interaction;
 
-public abstract class VisualEventListener : MonoBehaviour
+public abstract class VisualEventListener : ModifiableComponent
 {
-    public VisualisationManager visualisation;
+    protected VisualisationManager visualisation;
 
     public int[] listenedTracks = new int[1]; //For ease of use in editor. To reapply, disable and re-enable this script.
     public HashSet<int> listenedTracksHashset = new HashSet<int>();
