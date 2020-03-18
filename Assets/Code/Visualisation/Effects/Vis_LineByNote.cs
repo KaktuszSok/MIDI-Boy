@@ -82,6 +82,7 @@ public class Vis_LineByNote : VisualEffectInstance
             Note note = timedMidiEvent as Note;
             Color noteColour = ColourUtils.ColourFromNote(note, transposeHue);
             noteColour = Color.Lerp(PrimaryColour, noteColour, colourMix);
+            baseAlpha *= note.Velocity / 127f;
             noteColour.a = alphaEnvelope.Evaluate(0f) * baseAlpha;
             line.startColor = line.endColor = noteColour;
 

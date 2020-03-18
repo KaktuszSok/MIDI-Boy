@@ -84,7 +84,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Exposure: 1.3695061
+    - _Exposure: 0.6086257
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -101,4 +101,4 @@ Material:
     m_Colors:
     - _Color: {r: 0.37948447, g: 0.7830189, b: 0.09233712, a: 2}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Tint: {r: 0.49231797, g: 0.25384092, b: 0.5, a: 1.25}
+    - _Tint: {r: 0.4316272, g: 0.42265087, b: 0.5, a: 1.25}

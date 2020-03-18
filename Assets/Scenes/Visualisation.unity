@@ -524,7 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50cdef3e5dec5c49b54e3170bcdce63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listenedTracks: 09000000
+  listenedTracks: 090000000f000000
   LinePrefab: {fileID: 2659424845296352866, guid: 718966ba10a2d8e4583a7533e7220a04,
     type: 3}
   LinesParent: {fileID: 1986017068}
@@ -5485,7 +5485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50cdef3e5dec5c49b54e3170bcdce63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listenedTracks: 09000000
+  listenedTracks: 090000000f000000
   LinePrefab: {fileID: 2659424845296352866, guid: 718966ba10a2d8e4583a7533e7220a04,
     type: 3}
   LinesParent: {fileID: 1986017068}
@@ -5558,7 +5558,7 @@ Transform:
   m_Children:
   - {fileID: 2040494268}
   m_Father: {fileID: 1490465680}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &914061248
 MonoBehaviour:
@@ -5659,7 +5659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25ef15cc11fe6534a996dcfdb87a8255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listenedTracks: 02000000
+  listenedTracks: 0200000003000000
   FlashPrefab: {fileID: 9061854870121989778, guid: 3d2034d452cdfeb498e8e13d172bf81a,
     type: 3}
   intensityMult: 0.02
@@ -5718,10 +5718,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f07b649c400d94a88b9a36c8675a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listenedTracks: 02000000
+  listenedTracks: 0200000003000000
   transposeHue: 0
   intensityMult: 1
   attackTime: 0.4
+  overrideColour: {r: 0, g: 0, b: 0, a: 0}
   currColours: []
   pastColours: []
 --- !u!1 &1106983825
@@ -5767,7 +5768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50cdef3e5dec5c49b54e3170bcdce63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listenedTracks: 09000000
+  listenedTracks: 090000000f000000
   LinePrefab: {fileID: 2659424845296352866, guid: 718966ba10a2d8e4583a7533e7220a04,
     type: 3}
   LinesParent: {fileID: 1986017068}
@@ -5944,6 +5945,105 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1231721819
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1231721820}
+  - component: {fileID: 1231721821}
+  m_Layer: 0
+  m_Name: Drum Break A Flashes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1231721820
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231721819}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1490465680}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1231721821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231721819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ef15cc11fe6534a996dcfdb87a8255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenedTracks: 0e000000
+  FlashPrefab: {fileID: 9061854870121989778, guid: 0ecbd81347cf31747906e24d557b4f28,
+    type: 3}
+  intensityMult: 1.25
+  intensityByPitch:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 90
+      value: 1
+      inSlope: -0
+      outSlope: 0.25
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 92
+      value: 1.5
+      inSlope: 0.25
+      outSlope: 0.0625
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 104
+      value: 2.25
+      inSlope: 0.0625
+      outSlope: -0.054347824
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 127
+      value: 1
+      inSlope: -0.054347824
+      outSlope: 0
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  durationMult: 1
 --- !u!1 &1490465679
 GameObject:
   m_ObjectHideFlags: 0
@@ -5978,6 +6078,9 @@ Transform:
   - {fileID: 38604784}
   - {fileID: 1185836768}
   - {fileID: 943865315}
+  - {fileID: 1975404289}
+  - {fileID: 1231721820}
+  - {fileID: 1755220276}
   - {fileID: 914061247}
   - {fileID: 2110502013}
   m_Father: {fileID: 0}
@@ -6033,6 +6136,78 @@ MonoBehaviour:
   tintPower: 0.5
   modExp: 0
   modRot: 0
+--- !u!1 &1755220275
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1755220276}
+  - component: {fileID: 1755220277}
+  m_Layer: 0
+  m_Name: Drum Break B Flashes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1755220276
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755220275}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1490465680}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1755220277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755220275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ef15cc11fe6534a996dcfdb87a8255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenedTracks: 0f000000
+  FlashPrefab: {fileID: 9061854870121989778, guid: 28b849eff57f6e247af11765d28ff8af,
+    type: 3}
+  intensityMult: 0.625
+  intensityByPitch:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 127
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  durationMult: 0.25
 --- !u!1 &1883765051
 GameObject:
   m_ObjectHideFlags: 0
@@ -6076,7 +6251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50cdef3e5dec5c49b54e3170bcdce63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listenedTracks: 09000000
+  listenedTracks: 090000000f000000
   LinePrefab: {fileID: 2659424845296352866, guid: 718966ba10a2d8e4583a7533e7220a04,
     type: 3}
   LinesParent: {fileID: 1986017068}
@@ -6119,6 +6294,78 @@ MonoBehaviour:
   PrimaryColour: {r: 1, g: 1, b: 1, a: 1}
   colourMix: 0
   positionEnvelopeMult: 1
+--- !u!1 &1975404288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1975404289}
+  - component: {fileID: 1975404290}
+  m_Layer: 0
+  m_Name: Anti-Flashes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1975404289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975404288}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1490465680}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1975404290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975404288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ef15cc11fe6534a996dcfdb87a8255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenedTracks: 0d000000
+  FlashPrefab: {fileID: 9061854870121989778, guid: 3d2034d452cdfeb498e8e13d172bf81a,
+    type: 3}
+  intensityMult: -1.5
+  intensityByPitch:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 127
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  durationMult: 1
 --- !u!1 &1986017064
 GameObject:
   m_ObjectHideFlags: 0
@@ -6481,7 +6728,7 @@ Transform:
   - {fileID: 1883765052}
   - {fileID: 1106983826}
   m_Father: {fileID: 1490465680}
-  m_RootOrder: 6
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7221716659863900337
 MonoBehaviour:

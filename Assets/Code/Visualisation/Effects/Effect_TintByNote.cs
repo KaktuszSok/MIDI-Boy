@@ -12,6 +12,8 @@ public class Effect_TintByNote : VisualEventListener
     public float intensityMult = 1f;
     public float attackTime = 0.1f;
 
+    public Color overrideColour = Color.clear;
+
     List<Color> frameColourBuffer = new List<Color>();
     public Color[] currColours = new Color[0];
     public Color[] pastColours = new Color[0];
@@ -48,7 +50,14 @@ public class Effect_TintByNote : VisualEventListener
     public override void OnNoteDown(int track, Note note)
     {
         //Buffer colour to skybox based on the note pitch.
-        Color noteColour = ColourUtils.ColourFromNote(note, transposeHue)*intensityMult;
-        frameColourBuffer.Add(noteColour);
+        if (overrideColour == Color.clear)
+        {
+            Color noteColour = ColourUtils.ColourFromNote(note, transposeHue) * intensityMult;
+            frameColourBuffer.Add(noteColour);
+        }
+        else
+        {
+            frameColourBuffer.Add(overrideColour*intensityMult);
+        }
     }
 }

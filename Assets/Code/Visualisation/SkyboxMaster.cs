@@ -61,7 +61,13 @@ public class SkyboxMaster : MonoBehaviour
         finalModColour *= tintPower;
 
         skybox.SetColor("_Tint", SetRGBABrightness(ColourToVec4(baseTint) + finalModColour, GetRGBABrightness(baseTint))); //Keep tinted brightness at base brightness
-        skybox.SetFloat("_Exposure", baseExposure + modExp);
+        float totalExposure = baseExposure + modExp;
+        if(totalExposure < 0f)
+        {
+            //totalExposure -= 15f; //Cool effect
+            totalExposure = 0f;
+        }
+        skybox.SetFloat("_Exposure", totalExposure);
         skybox.SetFloat("_Rotation", baseRotation + modRot);
 
         lightSource.color = SetRGBABrightness(ColourToVec4(baseLightColour) + finalModColour, GetRGBABrightness(baseLightColour)); //Keep tinted brightness at base brightness
