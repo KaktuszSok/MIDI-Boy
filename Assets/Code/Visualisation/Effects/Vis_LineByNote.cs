@@ -9,10 +9,11 @@ public class Vis_LineByNote : VisualEffectInstance
     public LineRenderer line;
 
     [Header("Timing")]
+    public float durationOverride = 0; //0 = don't override
     public float durationMult = 1f;
 
     [Header("Shape")]
-    public float lengthOverride = -1;
+    [HideInInspector] public float lengthOverride = 0; //0 = don't override
     float baseWidth; //Take from line component
     public float widthMult = 1f;
     public AnimationCurve widthEnvelope = new AnimationCurve(new Keyframe(0f, 0f), new Keyframe(0.1f, 1f), new Keyframe(0.65f, 1f), new Keyframe(1f, 0f));
@@ -77,7 +78,7 @@ public class Vis_LineByNote : VisualEffectInstance
     {
         if(timedMidiEvent is Note)
         {
-            if (lengthOverride != -1) transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, lengthOverride);
+            if (lengthOverride != 0) transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, lengthOverride);
 
             Note note = timedMidiEvent as Note;
             Color noteColour = ColourUtils.ColourFromNote(note, transposeHue);
@@ -87,7 +88,8 @@ public class Vis_LineByNote : VisualEffectInstance
             line.startColor = line.endColor = noteColour;
 
             startTime = visualisation.time;
-            endTime = startTime + (note.LengthAs<MetricTimeSpan>(visualisation.MIDITempoMap).TotalMicroseconds / 1000000f)*durationMult;
+            float noteDuration = durationOverride == 0 ? (note.LengthAs<MetricTimeSpan>(visualisation.MIDITempoMap).TotalMicroseconds / 1000000f) : durationOverride;
+            endTime = startTime + noteDuration*durationMult;
 
             startPos = transform.localPosition;
 
@@ -95,5 +97,10 @@ public class Vis_LineByNote : VisualEffectInstance
             line.enabled = true;
             started = true;
         }
+    }
+
+    public float GetTotalDuration()
+    {
+        return endTime - startTime;
     }
 }

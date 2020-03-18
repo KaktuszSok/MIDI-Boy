@@ -418,7 +418,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -474,13 +474,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170076733}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_Father: {fileID: 1986017068}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &589375873
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,11 +529,13 @@ MonoBehaviour:
     type: 3}
   LinesParent: {fileID: 1986017068}
   unparentAfterSetup: 1
+  inheritVelocity: 0
   tunnelRadius: 2.5
-  tunnelFwdOffset: 5
-  tunnelFwdOffsetVariation: 0
+  tunnelOffset: {x: 0, y: 0, z: 5}
+  tunnelOffsetVariation: {x: 0, y: 0, z: 0}
   tunnelRotation: 0
   bonusRotationPerSecond: 120
+  bonusRotationPerBeat: 0
   rotateDir: 1
   RotateBy: 0
   lineShapeOverride:
@@ -560,7 +562,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  lineDurationMult: 8
+  lineDurationOverride: -1
+  lineDurationMult: -1
   lineLengthOverride: 2
   lineWidthMult: 0.02
   lineAlpha: 0.2
@@ -709,7 +712,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!199 &860745038
 ParticleSystemRenderer:
@@ -755,7 +758,7 @@ ParticleSystemRenderer:
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MaxParticleSize: 0.075
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
@@ -5490,11 +5493,13 @@ MonoBehaviour:
     type: 3}
   LinesParent: {fileID: 1986017068}
   unparentAfterSetup: 1
+  inheritVelocity: 0
   tunnelRadius: 2.5
-  tunnelFwdOffset: 5
-  tunnelFwdOffsetVariation: 0
+  tunnelOffset: {x: 0, y: 0, z: 5}
+  tunnelOffsetVariation: {x: 0, y: 0, z: 0}
   tunnelRotation: 90
   bonusRotationPerSecond: 120
+  bonusRotationPerBeat: 0
   rotateDir: 1
   RotateBy: 0
   lineShapeOverride:
@@ -5521,7 +5526,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  lineDurationMult: 8
+  lineDurationOverride: -1
+  lineDurationMult: -1
   lineLengthOverride: 2
   lineWidthMult: 0.02
   lineAlpha: 0.2
@@ -5577,11 +5583,13 @@ MonoBehaviour:
     type: 3}
   LinesParent: {fileID: 1986017068}
   unparentAfterSetup: 0
+  inheritVelocity: 0
   tunnelRadius: 10
-  tunnelFwdOffset: 32
-  tunnelFwdOffsetVariation: 0
+  tunnelOffset: {x: 0, y: 0, z: 32}
+  tunnelOffsetVariation: {x: 0, y: 0, z: 0}
   tunnelRotation: -90
   bonusRotationPerSecond: 0
+  bonusRotationPerBeat: 0
   rotateDir: -1
   RotateBy: 1
   lineShapeOverride:
@@ -5608,6 +5616,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  lineDurationOverride: -1
   lineDurationMult: 2
   lineLengthOverride: 24
   lineWidthMult: 4
@@ -5615,6 +5624,95 @@ MonoBehaviour:
   PrimaryColour: {r: 1, g: 1, b: 1, a: 1}
   colourMix: 1
   positionEnvelopeMult: 1
+--- !u!1 &926829677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 926829678}
+  - component: {fileID: 926829679}
+  m_Layer: 0
+  m_Name: Ride Shooty Upper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &926829678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926829677}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2130707867}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &926829679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926829677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50cdef3e5dec5c49b54e3170bcdce63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenedTracks: 08000000
+  LinePrefab: {fileID: 2659424845296352866, guid: 2c23b3d2a74717f4eb6239f778893c0b,
+    type: 3}
+  LinesParent: {fileID: 1986017068}
+  unparentAfterSetup: 1
+  inheritVelocity: 1
+  tunnelRadius: 2.55
+  tunnelOffset: {x: 0, y: 0.5, z: -6}
+  tunnelOffsetVariation: {x: 0, y: 0, z: 0}
+  tunnelRotation: 180
+  bonusRotationPerSecond: 0
+  bonusRotationPerBeat: 0
+  rotateDir: 1
+  RotateBy: 0
+  lineShapeOverride:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  lineDurationOverride: -1
+  lineDurationMult: 1
+  lineLengthOverride: 6
+  lineWidthMult: 0.03
+  lineAlpha: 0.4
+  PrimaryColour: {r: 1, g: 1, b: 1, a: 1}
+  colourMix: 0
+  positionEnvelopeMult: 64
 --- !u!1 &943865314
 GameObject:
   m_ObjectHideFlags: 0
@@ -5725,6 +5823,184 @@ MonoBehaviour:
   overrideColour: {r: 0, g: 0, b: 0, a: 0}
   currColours: []
   pastColours: []
+--- !u!1 &1081856797
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1081856798}
+  - component: {fileID: 1081856799}
+  m_Layer: 0
+  m_Name: Ride Shooty Upper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1081856798
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081856797}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2130707867}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1081856799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081856797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50cdef3e5dec5c49b54e3170bcdce63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenedTracks: 08000000
+  LinePrefab: {fileID: 2659424845296352866, guid: 2c23b3d2a74717f4eb6239f778893c0b,
+    type: 3}
+  LinesParent: {fileID: 1986017068}
+  unparentAfterSetup: 1
+  inheritVelocity: 1
+  tunnelRadius: 2.55
+  tunnelOffset: {x: 0, y: 0.5, z: -6}
+  tunnelOffsetVariation: {x: 0, y: 0, z: 0}
+  tunnelRotation: 0
+  bonusRotationPerSecond: 0
+  bonusRotationPerBeat: 0
+  rotateDir: 1
+  RotateBy: 0
+  lineShapeOverride:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  lineDurationOverride: -1
+  lineDurationMult: 1
+  lineLengthOverride: 6
+  lineWidthMult: 0.03
+  lineAlpha: 0.4
+  PrimaryColour: {r: 1, g: 1, b: 1, a: 1}
+  colourMix: 0
+  positionEnvelopeMult: 64
+--- !u!1 &1095924003
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1095924004}
+  - component: {fileID: 1095924005}
+  m_Layer: 0
+  m_Name: Ride Shooty Mid LR Alternating
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1095924004
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095924003}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2130707867}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1095924005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095924003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50cdef3e5dec5c49b54e3170bcdce63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenedTracks: 08000000
+  LinePrefab: {fileID: 2659424845296352866, guid: 2c23b3d2a74717f4eb6239f778893c0b,
+    type: 3}
+  LinesParent: {fileID: 1986017068}
+  unparentAfterSetup: 1
+  inheritVelocity: 1
+  tunnelRadius: 2.5
+  tunnelOffset: {x: 0, y: 0, z: -6}
+  tunnelOffsetVariation: {x: 0, y: 0, z: 0}
+  tunnelRotation: 0
+  bonusRotationPerSecond: 0
+  bonusRotationPerBeat: 360
+  rotateDir: 1
+  RotateBy: 0
+  lineShapeOverride:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  lineDurationOverride: -1
+  lineDurationMult: 1
+  lineLengthOverride: 6
+  lineWidthMult: 0.03
+  lineAlpha: 0.4
+  PrimaryColour: {r: 1, g: 1, b: 1, a: 1}
+  colourMix: 0
+  positionEnvelopeMult: 64
 --- !u!1 &1106983825
 GameObject:
   m_ObjectHideFlags: 0
@@ -5773,11 +6049,13 @@ MonoBehaviour:
     type: 3}
   LinesParent: {fileID: 1986017068}
   unparentAfterSetup: 1
+  inheritVelocity: 0
   tunnelRadius: 2.5
-  tunnelFwdOffset: 5
-  tunnelFwdOffsetVariation: 0
+  tunnelOffset: {x: 0, y: 0, z: 5}
+  tunnelOffsetVariation: {x: 0, y: 0, z: 0}
   tunnelRotation: 270
   bonusRotationPerSecond: 120
+  bonusRotationPerBeat: 0
   rotateDir: 1
   RotateBy: 0
   lineShapeOverride:
@@ -5804,7 +6082,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  lineDurationMult: 8
+  lineDurationOverride: -1
+  lineDurationMult: -1
   lineLengthOverride: 2
   lineWidthMult: 0.02
   lineAlpha: 0.2
@@ -6044,6 +6323,95 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   durationMult: 1
+--- !u!1 &1274968058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1274968059}
+  - component: {fileID: 1274968060}
+  m_Layer: 0
+  m_Name: Ride Shooty Lower
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1274968059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274968058}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2130707867}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1274968060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274968058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50cdef3e5dec5c49b54e3170bcdce63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenedTracks: 08000000
+  LinePrefab: {fileID: 2659424845296352866, guid: 2c23b3d2a74717f4eb6239f778893c0b,
+    type: 3}
+  LinesParent: {fileID: 1986017068}
+  unparentAfterSetup: 1
+  inheritVelocity: 1
+  tunnelRadius: 2.55
+  tunnelOffset: {x: 0, y: -0.5, z: -6}
+  tunnelOffsetVariation: {x: 0, y: 0, z: 0}
+  tunnelRotation: 180
+  bonusRotationPerSecond: 0
+  bonusRotationPerBeat: 0
+  rotateDir: 1
+  RotateBy: 0
+  lineShapeOverride:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  lineDurationOverride: -1
+  lineDurationMult: 1
+  lineLengthOverride: 6
+  lineWidthMult: 0.03
+  lineAlpha: 0.4
+  PrimaryColour: {r: 1, g: 1, b: 1, a: 1}
+  colourMix: 0
+  positionEnvelopeMult: 64
 --- !u!1 &1490465679
 GameObject:
   m_ObjectHideFlags: 0
@@ -6083,8 +6451,9 @@ Transform:
   - {fileID: 1755220276}
   - {fileID: 914061247}
   - {fileID: 2110502013}
+  - {fileID: 2130707867}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1490465681
 MonoBehaviour:
@@ -6126,15 +6495,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skybox: {fileID: 2100000, guid: 9f69d571a9cb54943b5a80ccd6b19e96, type: 2}
   baseTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  tintPower: 0.75
   tintChangeSpeed: 9999999
   baseExposure: 0.55
   baseRotation: 0
   lightSource: {fileID: 170076734}
-  baseLightColour: {r: 0, g: 0, b: 0, a: 0}
-  baseLightIntensity: 1.5
-  lightExposureReactiveness: 0.5
-  tintPower: 0.5
-  modExp: 0
+  baseLightColour: {r: 1, g: 0, b: 0.47843122, a: 1}
+  lightTintPower: 0.5
+  baseLightIntensity: 1
+  lightExposureReactiveness: 1
+  modExp: 1.3258958
   modRot: 0
 --- !u!1 &1755220275
 GameObject:
@@ -6208,6 +6578,95 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   durationMult: 0.25
+--- !u!1 &1786422117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1786422118}
+  - component: {fileID: 1786422119}
+  m_Layer: 0
+  m_Name: Ride Shooty Mid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1786422118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786422117}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2130707867}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1786422119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786422117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50cdef3e5dec5c49b54e3170bcdce63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenedTracks: 08000000
+  LinePrefab: {fileID: 2659424845296352866, guid: 2c23b3d2a74717f4eb6239f778893c0b,
+    type: 3}
+  LinesParent: {fileID: 1986017068}
+  unparentAfterSetup: 0
+  inheritVelocity: 0
+  tunnelRadius: 2.5
+  tunnelOffset: {x: 0, y: 0, z: -6}
+  tunnelOffsetVariation: {x: 0, y: 1, z: 0}
+  tunnelRotation: 180
+  bonusRotationPerSecond: 0
+  bonusRotationPerBeat: 0
+  rotateDir: 1
+  RotateBy: 0
+  lineShapeOverride:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  lineDurationOverride: -1
+  lineDurationMult: 1
+  lineLengthOverride: 6
+  lineWidthMult: 0.03
+  lineAlpha: 0.4
+  PrimaryColour: {r: 1, g: 1, b: 1, a: 1}
+  colourMix: 0
+  positionEnvelopeMult: 64
 --- !u!1 &1883765051
 GameObject:
   m_ObjectHideFlags: 0
@@ -6256,11 +6715,13 @@ MonoBehaviour:
     type: 3}
   LinesParent: {fileID: 1986017068}
   unparentAfterSetup: 1
+  inheritVelocity: 0
   tunnelRadius: 2.5
-  tunnelFwdOffset: 5
-  tunnelFwdOffsetVariation: 0
+  tunnelOffset: {x: 0, y: 0, z: 5}
+  tunnelOffsetVariation: {x: 0, y: 0, z: 0}
   tunnelRotation: 180
   bonusRotationPerSecond: 120
+  bonusRotationPerBeat: 0
   rotateDir: 1
   RotateBy: 0
   lineShapeOverride:
@@ -6287,13 +6748,103 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  lineDurationMult: 8
+  lineDurationOverride: -1
+  lineDurationMult: -1
   lineLengthOverride: 2
   lineWidthMult: 0.02
   lineAlpha: 0.2
   PrimaryColour: {r: 1, g: 1, b: 1, a: 1}
   colourMix: 0
   positionEnvelopeMult: 1
+--- !u!1 &1964882122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1964882123}
+  - component: {fileID: 1964882124}
+  m_Layer: 0
+  m_Name: Ride Shooty Lower
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1964882123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964882122}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2130707867}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1964882124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964882122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50cdef3e5dec5c49b54e3170bcdce63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenedTracks: 08000000
+  LinePrefab: {fileID: 2659424845296352866, guid: 2c23b3d2a74717f4eb6239f778893c0b,
+    type: 3}
+  LinesParent: {fileID: 1986017068}
+  unparentAfterSetup: 1
+  inheritVelocity: 1
+  tunnelRadius: 2.55
+  tunnelOffset: {x: 0, y: -0.5, z: -6}
+  tunnelOffsetVariation: {x: 0, y: 0, z: 0}
+  tunnelRotation: 0
+  bonusRotationPerSecond: 0
+  bonusRotationPerBeat: 0
+  rotateDir: 1
+  RotateBy: 0
+  lineShapeOverride:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  lineDurationOverride: -1
+  lineDurationMult: 1
+  lineLengthOverride: 6
+  lineWidthMult: 0.03
+  lineAlpha: 0.4
+  PrimaryColour: {r: 1, g: 1, b: 1, a: 1}
+  colourMix: 0
+  positionEnvelopeMult: 64
 --- !u!1 &1975404288
 GameObject:
   m_ObjectHideFlags: 0
@@ -6471,12 +7022,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986017064}
   m_LocalRotation: {x: -0.19310303, y: -0.43405604, z: -0.087588295, w: 0.87557685}
-  m_LocalPosition: {x: -2.08, y: 1.19, z: -8.43}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1230911017}
+  - {fileID: 170076735}
+  - {fileID: 3445058328756141482}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -24.468, y: -52.933002, z: 0.897}
 --- !u!114 &1986017069
 MonoBehaviour:
@@ -6658,11 +7211,13 @@ MonoBehaviour:
     type: 3}
   LinesParent: {fileID: 1986017068}
   unparentAfterSetup: 0
+  inheritVelocity: 0
   tunnelRadius: 11
-  tunnelFwdOffset: 32
-  tunnelFwdOffsetVariation: 0
+  tunnelOffset: {x: 0, y: 0, z: 32}
+  tunnelOffsetVariation: {x: 0, y: 0, z: 0}
   tunnelRotation: -90
   bonusRotationPerSecond: 0
+  bonusRotationPerBeat: 0
   rotateDir: -1
   RotateBy: 1
   lineShapeOverride:
@@ -6689,6 +7244,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  lineDurationOverride: -1
   lineDurationMult: 2
   lineLengthOverride: 24
   lineWidthMult: 4
@@ -6730,6 +7286,122 @@ Transform:
   m_Father: {fileID: 1490465680}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2130707866
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2130707867}
+  m_Layer: 0
+  m_Name: Ride Shooty-s
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2130707867
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130707866}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 926829678}
+  - {fileID: 1081856798}
+  - {fileID: 1095924004}
+  - {fileID: 1786422118}
+  - {fileID: 1274968059}
+  - {fileID: 1964882123}
+  m_Father: {fileID: 1490465680}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &3445058328756141481
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1986017068}
+    m_Modifications:
+    - target: {fileID: 2761432336889752349, guid: 26e1b2bb29386f8419f084a6772e4225,
+        type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 72120598}
+    - target: {fileID: 8937463332891080504, guid: 26e1b2bb29386f8419f084a6772e4225,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937463332891080504, guid: 26e1b2bb29386f8419f084a6772e4225,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937463332891080504, guid: 26e1b2bb29386f8419f084a6772e4225,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937463332891080504, guid: 26e1b2bb29386f8419f084a6772e4225,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937463332891080504, guid: 26e1b2bb29386f8419f084a6772e4225,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937463332891080504, guid: 26e1b2bb29386f8419f084a6772e4225,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937463332891080504, guid: 26e1b2bb29386f8419f084a6772e4225,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937463332891080504, guid: 26e1b2bb29386f8419f084a6772e4225,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937463332891080504, guid: 26e1b2bb29386f8419f084a6772e4225,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937463332891080504, guid: 26e1b2bb29386f8419f084a6772e4225,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937463332891080504, guid: 26e1b2bb29386f8419f084a6772e4225,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9006504712394429208, guid: 26e1b2bb29386f8419f084a6772e4225,
+        type: 3}
+      propertyPath: m_Name
+      value: FreqSpectrum
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 26e1b2bb29386f8419f084a6772e4225, type: 3}
+--- !u!4 &3445058328756141482 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8937463332891080504, guid: 26e1b2bb29386f8419f084a6772e4225,
+    type: 3}
+  m_PrefabInstance: {fileID: 3445058328756141481}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7221716659863900337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6743,4 +7415,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GluedTo: {fileID: 0}
+  position: 1
+  rotation: 1
   scale: 1

@@ -8,16 +8,19 @@ public class Effect_LineTunnel : VisualEventListener
 {
     public GameObject LinePrefab;
     public Transform LinesParent;
+    ConstantMoveForward parentMover;
     public bool unparentAfterSetup = false;
+    public bool inheritVelocity = false; //Makes position envelope scale with camera speed
 
     [Header("Tunnel Shape")]
     public float tunnelRadius = 1f;
-    public float tunnelFwdOffset = 0f; //How far ahead to spawn the tunnel?
-    public float tunnelFwdOffsetVariation = 0f; //Randomises how many units a note spawns in front of or behind the tunnel's offset.
+    public Vector3 tunnelOffset = Vector3.zero;
+    public Vector3 tunnelOffsetVariation = Vector3.zero;
 
     [Header("Tunnel Rotation")] //All rotations in degrees
     public float tunnelRotation = 0f; //Around forward axis
     public float bonusRotationPerSecond = 0f;
+    public float bonusRotationPerBeat = 0f;
     public float rotateDir = -1f; //Clockwise or Anticlockwise?
     public enum RotateType
     {
@@ -29,18 +32,28 @@ public class Effect_LineTunnel : VisualEventListener
 
     [Header("Line Parameters")]
     public AnimationCurve lineShapeOverride = new AnimationCurve();
+    public float lineDurationOverride = -1f; //-1 = use prefab's default, 0 = use note duration (aka don't override)
     public float lineDurationMult = 1f;
-    public float lineLengthOverride = -1f;
+    public float lineLengthOverride = -1f; //-1 or 0 = don't override
     public float lineWidthMult = -1f;
     public float lineAlpha = -1f;
     public Color PrimaryColour = Color.white;
     public float colourMix = 1f; // 0 = all primary, 1 = all secondary (i.e. note colour)
     public float positionEnvelopeMult = 1f;
 
+    private void Awake()
+    {
+        parentMover = LinesParent.GetComponent<ConstantMoveForward>();
+    }
+
     public override void OnNoteDown(int track, Note note)
     {
         //Rotation
-        float finalTunnelRotation = tunnelRotation + bonusRotationPerSecond * visualisation.time;
+        float noteTime = note.TimeAs<MetricTimeSpan>(visualisation.MIDITempoMap).TotalMicroseconds / 1000000f;
+        float bonusRotation = bonusRotationPerSecond * noteTime;
+        if(bonusRotationPerBeat != 0) bonusRotation += bonusRotationPerBeat * (float)visualisation.GetTimeInBeats(note.Time);
+
+        float finalTunnelRotation = tunnelRotation + bonusRotation;
         float noteRotation = 0f;
         switch(RotateBy)
         {
@@ -60,10 +73,12 @@ public class Effect_LineTunnel : VisualEventListener
         //Position
         Vector3 notePos = Vector3.right * tunnelRadius;
         notePos = Quaternion.Euler(0, 0, (noteRotation + finalTunnelRotation) * rotateDir) * notePos; //Rotate position around forward axis based on tunnel rotation and note rotation.
-        notePos.z += tunnelFwdOffset;
-        if (tunnelFwdOffsetVariation != 0)
+        notePos += tunnelOffset;
+        if (tunnelOffsetVariation != Vector3.zero)
         {
-            notePos.z += UnityEngine.Random.Range(-tunnelFwdOffsetVariation, tunnelFwdOffsetVariation);
+            notePos.x += UnityEngine.Random.Range(-tunnelOffsetVariation.x, tunnelOffsetVariation.x);
+            notePos.y += UnityEngine.Random.Range(-tunnelOffsetVariation.y, tunnelOffsetVariation.y);
+            notePos.z += UnityEngine.Random.Range(-tunnelOffsetVariation.z, tunnelOffsetVariation.z);
         }
 
         //Prefab
@@ -73,7 +88,8 @@ public class Effect_LineTunnel : VisualEventListener
         //Line Component
         Vis_LineByNote noteLineComponent = noteLine.GetComponent<Vis_LineByNote>();
 
-        noteLineComponent.durationMult = lineDurationMult;
+        if(lineDurationOverride != -1) noteLineComponent.durationOverride = lineDurationOverride;
+        if(lineDurationMult != -1) noteLineComponent.durationMult = lineDurationMult;
 
         noteLineComponent.lengthOverride = lineLengthOverride;
         if (lineWidthMult != -1) noteLineComponent.widthMult = lineWidthMult;
@@ -82,7 +98,8 @@ public class Effect_LineTunnel : VisualEventListener
         noteLineComponent.PrimaryColour = PrimaryColour;
         noteLineComponent.colourMix = colourMix;
 
-        noteLineComponent.positionEnvMult = positionEnvelopeMult;
+        if(positionEnvelopeMult != -1)
+            noteLineComponent.positionEnvMult = positionEnvelopeMult;
 
         if (lineShapeOverride.keys.Length > 1)
         {
@@ -91,6 +108,18 @@ public class Effect_LineTunnel : VisualEventListener
 
         noteLineComponent.Initialise();
         noteLineComponent.Visualise(track, note);
+
+        //Add parent's velocity to position envelope.
+        if (inheritVelocity)
+        {
+
+            for (int i = 0; i < noteLineComponent.positionEnvelope.keys.Length; i++)
+            {
+                Keyframe k = noteLineComponent.positionEnvelope.keys[i];
+                k.value += parentMover.currentVelocity * k.time / noteLineComponent.GetTotalDuration();
+                noteLineComponent.positionEnvelope.keys[i] = k;
+            }
+        }
 
         //Parenting
         if (unparentAfterSetup)

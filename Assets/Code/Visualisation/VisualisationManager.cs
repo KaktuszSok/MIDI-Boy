@@ -148,6 +148,18 @@ public class VisualisationManager : MonoBehaviour {
         {
             GoToTime(preciseTime + Mathf.Sign(Input.mouseScrollDelta.y)*(Input.GetKey(KeyModifier) ? 4:1)/(MIDITempoMap.Tempo.AtTime(GetTimeInTicks(preciseTime)).BeatsPerMinute/60f));
         }
+        //Skip through song using number keys
+        for(int i = 0; i < 10; i++)
+        {
+            if(Input.GetKeyDown(i.ToString()))
+            {
+                //If pressing "1" key, skip to 0% of song. "2" = 10%, "3" = 20%, ..., "9" = 80%, "0" = 90%.
+                int j = i;
+                if (j == 0) j = 10;
+                j -= 1;
+                GoToTime((j/10f) * music.clip.length);
+            }
+        }
     }
 
     /// <returns>Was the step successful? (false if e.g. startTime == endTIme)</returns>
@@ -159,7 +171,7 @@ public class VisualisationManager : MonoBehaviour {
 
         if (startTime == endTime) return false; //Ignore if start and end time are equal.
 
-        Debug.Log("Stepping MIDI from " + startTime + " to " + endTime + "...");
+        if (logTrack != -1) Debug.Log("Stepping MIDI from " + startTime + " to " + endTime + "...");
         for (int t = 0; t < MIDIEvents.Length; t++) //for every track...
         {
             for (int i = lastEventCache[t] + 1; i < trackLengthsCache[t]; i++) //for every event...
@@ -245,7 +257,6 @@ public class VisualisationManager : MonoBehaviour {
         music.time = (float)t;
         prevTime = t;
         preciseTime = t - visualsOffset;
-        Debug.Log(t);
         //Clear last event cache
         lastEventCache = new int[MIDIEvents.Length];
         for (int i = 0; i < lastEventCache.Length; i++)
@@ -268,6 +279,16 @@ public class VisualisationManager : MonoBehaviour {
     public long GetTimeInTicks(double seconds)
     {
         return TimeConverter.ConvertFrom(new MetricTimeSpan((int)(seconds * 1000000)), MIDITempoMap);
+    }
+
+    public double GetTimeInBeats(double seconds)
+    {
+        return GetTimeInBeats(GetTimeInTicks(seconds));
+    }
+
+    public double GetTimeInBeats(long ticks)
+    {
+        return (double)ticks/timeDivision;
     }
 
     double secondsPerSample;

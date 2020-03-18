@@ -7,17 +7,18 @@ public class SkyboxMaster : MonoBehaviour
     public static SkyboxMaster instance;
     public Material skybox;
     public Color baseTint = new Color(0.5f, 0.5f, 0.5f);
+    public float tintPower = 0.5f;
     public float tintChangeSpeed = 2f;
     public float baseExposure = 1f;
     public float baseRotation = 1f;
     public Light lightSource;
     public Color baseLightColour = Color.clear;
+    public float lightTintPower = 0.5f;
     public float baseLightIntensity = -1;
     public float lightExposureReactiveness = 0.5f; //How much does light intensity react to exposure?
 
     //per-frame variables:
     public List<Color> modColours { get; private set; } = new List<Color>();
-    public float tintPower = 0.5f;
     public float modExp;
     public float modRot;
 
@@ -50,6 +51,7 @@ public class SkyboxMaster : MonoBehaviour
 
     private void LateUpdate()
     {
+        //Smooth tint change
         targetModHSV = ComputeColourMix(modColours.ToArray()); //Get target RGBA first
         Color.RGBToHSV(targetModHSV, out targetModHSV.x, out targetModHSV.y, out targetModHSV.z); //Convert to HSVA
         if (float.IsNaN(targetModHSV.w)) targetModHSV.w = 0; //Get rid of possible NaNs in alpha value
@@ -58,9 +60,8 @@ public class SkyboxMaster : MonoBehaviour
         float alpha = finalModColour.w;
         finalModColour = Color.HSVToRGB(finalModColour.x, finalModColour.y, finalModColour.z);
         finalModColour.w = alpha;
-        finalModColour *= tintPower;
 
-        skybox.SetColor("_Tint", SetRGBABrightness(ColourToVec4(baseTint) + finalModColour, GetRGBABrightness(baseTint))); //Keep tinted brightness at base brightness
+        skybox.SetColor("_Tint", SetRGBABrightness(ColourToVec4(baseTint) + finalModColour*tintPower, GetRGBABrightness(baseTint))); //Keep tinted brightness at base brightness
         float totalExposure = baseExposure + modExp;
         if(totalExposure < 0f)
         {
@@ -70,7 +71,7 @@ public class SkyboxMaster : MonoBehaviour
         skybox.SetFloat("_Exposure", totalExposure);
         skybox.SetFloat("_Rotation", baseRotation + modRot);
 
-        lightSource.color = SetRGBABrightness(ColourToVec4(baseLightColour) + finalModColour, GetRGBABrightness(baseLightColour)); //Keep tinted brightness at base brightness
+        lightSource.color = SetRGBABrightness(ColourToVec4(baseLightColour) + finalModColour*lightTintPower, GetRGBABrightness(baseLightColour)); //Keep tinted brightness at base brightness
         lightSource.intensity = baseLightIntensity * (baseExposure + modExp*lightExposureReactiveness);
 
         modColours.Clear();

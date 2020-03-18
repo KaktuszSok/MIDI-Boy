@@ -5,12 +5,14 @@ using UnityEngine;
 public class GlueTransform : MonoBehaviour
 {
     public Transform GluedTo;
+    public bool position = true;
+    public bool rotation = true;
     public bool scale = true;
 
     private void LateUpdate()
     {
-        transform.position = GluedTo.position;
-        transform.rotation = GluedTo.rotation;
+        if(position) transform.position = GluedTo.position;
+        if(rotation) transform.rotation = GluedTo.rotation;
         if(scale) transform.localScale = GluedTo.localScale;
     }
 }

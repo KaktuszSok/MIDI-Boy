@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6802829455350328153}
   - component: {fileID: 6116932694546095554}
   m_Layer: 0
-  m_Name: Line Constant Vel
+  m_Name: Line Shooty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2659424845296352866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 200}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -160,24 +160,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   line: {fileID: 6802829455350328153}
-  durationOverride: 0
+  durationOverride: 1
   durationMult: 1
-  lengthOverride: -1
+  lengthOverride: 1
   widthMult: 1
   widthEnvelope:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.1
       value: 1
       inSlope: 0
       outSlope: 0
@@ -185,23 +176,14 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0
       outWeight: 0
-    - serializedVersion: 3
-      time: 0.65000004
-      value: 1
-      inSlope: 0
-      outSlope: 0.040170714
-      tangentMode: 1
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 1
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.04475
-      outSlope: -0.04475
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.7980845
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -240,27 +222,27 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: -1
-      tangentMode: 69
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: -1
-      inSlope: -1
-      outSlope: 0
-      tangentMode: 69
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  positionEnvMult: 1
+  positionEnvMult: 64
   positionAxis: {x: 0, y: 0, z: 1}
   positionAxisSpace: 1
-  positionEnvRelativeToDurationMult: 1
-  positionEnvRelativeToLength: 1
+  positionEnvRelativeToDurationMult: 0
+  positionEnvRelativeToLength: 0
   startPos: {x: 0, y: 0, z: 0}
