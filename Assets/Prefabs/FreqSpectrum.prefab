@@ -475,6 +475,21 @@ PrefabInstance:
       propertyPath: sourceType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1694872974673256473, guid: b71ca69fdd4a7054896296841b79cd5f,
+        type: 3}
+      propertyPath: frequencyLimitHigh
+      value: 12000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1694872974673256473, guid: b71ca69fdd4a7054896296841b79cd5f,
+        type: 3}
+      propertyPath: attackDamp
+      value: 0.401
+      objectReference: {fileID: 0}
+    - target: {fileID: 1694872974673256473, guid: b71ca69fdd4a7054896296841b79cd5f,
+        type: 3}
+      propertyPath: decayDamp
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 1714939655935632420, guid: b71ca69fdd4a7054896296841b79cd5f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2058,7 +2073,7 @@ PrefabInstance:
     - target: {fileID: 8821696064690421381, guid: b71ca69fdd4a7054896296841b79cd5f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8821696064690421381, guid: b71ca69fdd4a7054896296841b79cd5f,
         type: 3}

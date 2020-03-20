@@ -116,6 +116,11 @@ public class SimpleSpectrum : MonoBehaviour {
     [Tooltip("Sets a minimum scale for the bars.")]
     public float barMinYScale = 0.1f;
     /// <summary>
+    /// A curve to scale bars non-linearly.
+    /// </summary>
+    [Tooltip("Use this to scale bars non-linearly. Keep in range 0 to 1.")]
+    public AnimationCurve barYScaling = new AnimationCurve(new Keyframe(0, 0, 0, 1), new Keyframe(1, 1, 1, 0));
+    /// <summary>
     /// The prefab of bar to use when building.
     /// Refer to the documentation to use a custom prefab.
     /// </summary>
@@ -508,6 +513,9 @@ public class SimpleSpectrum : MonoBehaviour {
 #if !WEB_MODE
                 value = Mathf.Sqrt(value); //compress the amplitude values by sqrt(x)
 #endif
+
+                //Scale by curve
+                value = barYScaling.Evaluate(Mathf.Clamp01(value));
 
                 //DAMPENING
                 //Vector3 oldScale = bar.localScale;

@@ -37,6 +37,7 @@ public class SimpleSpectrumEditor : Editor {
     SerializedProperty propertyBarAmount;
     SerializedProperty propertyBarYScale;
     SerializedProperty propertyBarMinYScale;
+    SerializedProperty propertyBarYScaling;
     SerializedProperty propertyBarXScale;
     SerializedProperty propertyBarXSpacing;
     SerializedProperty propertyBarCurveAngle;
@@ -92,6 +93,7 @@ public class SimpleSpectrumEditor : Editor {
         propertyBarAmount = serializedObject.FindProperty("barAmount");
         propertyBarYScale = serializedObject.FindProperty("barYScale");
         propertyBarMinYScale = serializedObject.FindProperty("barMinYScale");
+        propertyBarYScaling = serializedObject.FindProperty("barYScaling");
         propertyBarXScale = serializedObject.FindProperty("barXScale");
         propertyBarXSpacing = serializedObject.FindProperty("barXSpacing");
         propertyBarCurveAngle = serializedObject.FindProperty("barCurveAngle");
@@ -165,6 +167,7 @@ public class SimpleSpectrumEditor : Editor {
 			EditorGUILayout.PropertyField (propertyBarPrefab);
             EditorGUILayout.PropertyField (propertyBarYScale);
             EditorGUILayout.PropertyField(propertyBarMinYScale);
+            EditorGUILayout.PropertyField(propertyBarYScaling);
             EditorGUILayout.PropertyField(propertyBarXScale);
             EditorGUILayout.PropertyField(propertyBarXSpacing);
             EditorGUILayout.PropertyField(propertyBarXRotation);

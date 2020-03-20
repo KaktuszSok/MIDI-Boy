@@ -10,6 +10,7 @@ public class ConstantSmoothRotation : MonoBehaviour
     //Keyframe Distance is how long, as a fraction of the song, does it take to get from one keyframe to the next.
     public float minKeyframeDistance = 0.05f;
     public float maxKeyframeDistance = 0.15f;
+    public float maxSteepness = 1750f;
     public float rotationLimitXY = 180f; //Rotation on any X and Y axes can be at most between - this and + this.
     public float rotationSpeedZMult = 1f; //Multiplier to how fast, on average, Z rotation changes.
     public Vector3 forwardRotation = Vector3.one*-1234; //Rotation around which everything revolves. -1234 on all to set to starting rotation.
@@ -19,10 +20,10 @@ public class ConstantSmoothRotation : MonoBehaviour
     public AnimationCurve YThroughoutSong;
     public AnimationCurve ZThroughoutSong;
 
-    void Start()
+    void Awake()
     {
-        Random.InitState(seed);
         visualisation = VisualisationManager.instance;
+        Random.InitState(seed);
 
         //Generate curves
         PopulateCurveRandomly(XThroughoutSong);
@@ -49,16 +50,27 @@ public class ConstantSmoothRotation : MonoBehaviour
     AnimationCurve PopulateCurveRandomly(AnimationCurve curve, float speedMultiplier = 1f)
     {
         float genTime = 0f; //Keep track of how far we are in the curve, in range 0 to 1.
+        float lastValue = float.NaN;
         while (genTime < 1)
         {
             float curveValue = Random.Range(-180f, 180f);
+            if(!float.IsNaN(lastValue)) //Steepness check
+            {
+                float deltaX = genTime - curve.keys[curve.keys.Length - 1].time;
+                float maxDeviation = maxSteepness * deltaX;
+                curveValue = Mathf.Clamp(curveValue, lastValue - maxDeviation, lastValue + maxDeviation); //Clamp it so that steepness does not exceed maxSteepness
+            }
+
             Keyframe kf = new Keyframe(genTime, curveValue); //Create keyframe at current time and with random value.
             curve.AddKey(kf); //Add to curve.
+            lastValue = curveValue;
 
             //Advance time by random amount, to be used for next keyframe.
             float keyframeDistance = Random.Range(minKeyframeDistance, maxKeyframeDistance)/speedMultiplier;
             genTime += keyframeDistance;
-            if (genTime >= 1f) //Put down last keyframe.
+
+            //Last keyframe smoothing:
+            if (genTime >= 1f) //If we are putting down the last keyframe...
             {
                 //Simulate having a frame after the ending
                 curveValue = Random.Range(-180f, 180f);

@@ -48,12 +48,9 @@ public class VisualisationManager : MonoBehaviour {
     private void Awake()
     {
         instance = this;
-    }
-
-    private void Start()
-    {
         StartCoroutine(SetUp());
     }
+
 
     IEnumerator SetUp()
     {
@@ -307,5 +304,26 @@ public class VisualisationManager : MonoBehaviour {
     public int GetAudioTimeInSamples(double seconds)
     {
         return (int)(seconds * samplesPerSecond);
+    }
+
+    public List<Note> GetAllNotesOnTrack(int track)
+    {
+        List<Note> notes = new List<Note>();
+        for (int i = 0; i < trackLengthsCache[track]; i++) //for every event...
+        {
+            ITimedObject e = MIDIEvents[track][i];
+            if (e is TimedEvent && ((TimedEvent)e).Event is NoteOnEvent) //NoteOn without Note Off - convert it to a short note because Reaper fucked shit up.
+            {
+                NoteOnEvent noteOn = ((TimedEvent)e).Event as NoteOnEvent;
+                Note newNote = new Note(noteOn.NoteNumber, midi.TimeDivision.ToInt16() / 4, e.Time);
+                newNote.Velocity = noteOn.Velocity;
+                e = newNote;
+            }
+            if (e is Note)
+            {
+                notes.Add(e as Note);
+            }
+        }
+        return notes;
     }
 }
